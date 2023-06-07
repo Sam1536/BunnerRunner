@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/coil.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/coins.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/platform_big.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/wingman.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/fly_powerup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/parallax1_blue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/carrot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/spikes.tscn" type="PackedScene" id=11]
+
+[node name="test_area" type="Node2D"]
+position = Vector2( 8, 0 )
+
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="platform_big" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 567, 945 )
+
+[node name="platform_big2" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 1104, 945 )
+
+[node name="platform_big3" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 2294, 795 )
+collision_layer = 0
+
+[node name="platform_big4" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 3031, 733 )
+
+[node name="platform_big5" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 3810, 748 )
+
+[node name="platform_big6" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 4558, 748 )
+
+[node name="platform_big7" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 5359, 733 )
+
+[node name="platform_big8" parent="platforms" instance=ExtResource( 4 )]
+position = Vector2( 6158, 556 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 460, 795 )
+collision_mask = 0
+
+[node name="coil" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2624, 710 )
+
+[node name="coil2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1796, 850 )
+
+[node name="coins" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1194, 856 )
+
+[node name="coins2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1796, 775 )
+
+[node name="coins3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3810, 645 )
+
+[node name="coins4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4558, 631 )
+
+[node name="coins5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5359, 617 )
+
+[node name="wingman" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1541, 924 )
+
+[node name="wingman2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3434, 617 )
+
+[node name="wingman3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 4209, 633 )
+
+[node name="wingman4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 4942, 639 )
+
+[node name="fly_powerup" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1525, 775 )
+
+[node name="fly_powerup2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 5790, 480 )
+
+[node name="parallax" parent="." instance=ExtResource( 8 )]
+modulate_l1 = Color( 0.239216, 0.356863, 0.890196, 1 )
+modulate_l2 = Color( 1, 0.984314, 0.984314, 1 )
+modulate_l3 = Color( 0.698039, 0.866667, 0.470588, 1 )
+modulate_l4 = Color( 0.423529, 0.952941, 0.054902, 1 )
+
+[node name="carrot" parent="." instance=ExtResource( 9 )]
+position = Vector2( 6270, 445 )
+
+[node name="spikes" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2775, 687 )
+
+[node name="spikes2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 5632, 641 )

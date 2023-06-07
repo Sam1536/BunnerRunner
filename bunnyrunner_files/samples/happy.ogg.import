@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/happy.ogg-1cab6a94011da40bde1518b68ce7bf42.oggstr"
+
+[deps]
+
+source_file="res://bunnyrunner_files/samples/happy.ogg"
+dest_files=[ "res://.import/happy.ogg-1cab6a94011da40bde1518b68ce7bf42.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

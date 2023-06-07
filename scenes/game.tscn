@@ -1,0 +1,160 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/stage_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/coin_counter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/game.gd" type="Script" id=3]
+[ext_resource path="res://scenes/powerup_bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bunnyrunner_files/fonts/Chocolate Bar Demo.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://bunnyrunner_files/sprites/HUD/cross.png" type="Texture" id=6]
+[ext_resource path="res://bunnyrunner_files/music/Victory.ogg" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 350
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "3" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "count"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "3", "2", "1", "GO!" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="interface" type="Node2D" parent="."]
+position = Vector2( 447, 132 )
+
+[node name="stage_buttons" type="GridContainer" parent="interface"]
+margin_top = 82.0
+margin_right = 986.0
+margin_bottom = 807.0
+columns = 4
+
+[node name="stage_button" parent="interface/stage_buttons" instance=ExtResource( 1 )]
+margin_right = 175.0
+text = "stage 01"
+music = "res://bunnyrunner_files/samples/happy.ogg"
+stage_name = "stg01"
+
+[node name="stage_button2" parent="interface/stage_buttons" instance=ExtResource( 1 )]
+margin_left = 179.0
+margin_right = 356.0
+text = "stage 02"
+stage_name = "stg02"
+
+[node name="stage_button3" parent="interface/stage_buttons" instance=ExtResource( 1 )]
+margin_left = 360.0
+margin_right = 535.0
+text = "stage 03"
+stage_name = "stg03"
+
+[node name="stage_button4" parent="interface/stage_buttons" instance=ExtResource( 1 )]
+margin_left = 539.0
+margin_right = 713.0
+text = "stage 04"
+stage_name = "stg04"
+
+[node name="stage_button5" parent="interface/stage_buttons" instance=ExtResource( 1 )]
+margin_top = 54.0
+margin_right = 175.0
+margin_bottom = 104.0
+text = "stage 05"
+stage_name = "stg05"
+
+[node name="stage_button6" parent="interface/stage_buttons" instance=ExtResource( 1 )]
+margin_left = 179.0
+margin_top = 54.0
+margin_right = 356.0
+margin_bottom = 104.0
+text = "stage 06"
+stage_name = "stg06"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="controls" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="powerup_bar" parent="HUD/controls" instance=ExtResource( 4 )]
+
+[node name="coin_counter" parent="HUD/controls" instance=ExtResource( 2 )]
+
+[node name="countdown" type="Node2D" parent="HUD"]
+visible = false
+position = Vector2( 960, 540 )
+
+[node name="label" type="Label" parent="HUD/countdown"]
+margin_left = -105.0
+margin_top = -210.0
+margin_right = 122.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 1 )
+text = "GO!"
+
+[node name="anim" type="AnimationPlayer" parent="HUD/countdown"]
+anims/RESET = SubResource( 2 )
+anims/count = SubResource( 3 )
+
+[node name="estage_exit" type="TextureButton" parent="HUD"]
+margin_left = 1758.0
+margin_right = 1925.0
+margin_bottom = 183.0
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 3
+
+[node name="stream_victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "fx"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+[connection signal="pressed" from="HUD/estage_exit" to="." method="_on_estage_exit_pressed"]

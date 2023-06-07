@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/carrot.gd" type="Script" id=1]
+[ext_resource path="res://bunnyrunner_files/sprites/Items/carrot.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 1075 )
+
+[node name="carrot" type="Area2D"]
+collision_layer = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="poly" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 39, 29, 38, 22, 33, 11, 24, -2, 15, -10, 10, -11, 3, -8, 2, -29, -7, -37, -31, -34, -40, -24, -34, -7, -15, 2, -8, 1, -6, 14, 10, 27, 24, 34, 31, 35, 36, 34 )
+
+[node name="deadzone" type="Area2D" parent="."]
+position = Vector2( 629, 0 )
+collision_layer = 0
+
+[node name="shape" type="CollisionShape2D" parent="deadzone"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_carrot_body_entered"]
+[connection signal="body_entered" from="deadzone" to="." method="_on_deadzone_body_entered"]

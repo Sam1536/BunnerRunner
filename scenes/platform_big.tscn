@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/platform_big.gd" type="Script" id=1]
+[ext_resource path="res://bunnyrunner_files/sprites/Environment/ground_grass.png" type="Texture" id=2]
+
+[node name="platform_big" type="StaticBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+texture = 1
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="poly" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( 160, 34, 190, -16, 190, -32, 186, -41, 177, -47, 24, -48, -177, -47, -187, -41, -190, -32, -190, -17, -160, 47 )
